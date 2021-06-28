@@ -7,6 +7,12 @@ const App = () => {
     <div className="App">
       <h1>React Timer</h1>
       <Timer />
+      <p
+        className="text-muted pt-3"
+        style={{ marginLeft: "430px", fontSize: "12px" }}
+      >
+        Developed By Niloy Saha Roy
+      </p>
     </div>
   );
 };

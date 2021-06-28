@@ -1,6 +1,8 @@
 import React from "react";
 
-import { Container, Button } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+import Buttons from "../buttons";
+import DisplayClock from "../displayclock";
 
 class Timer extends React.Component {
   state = {
@@ -58,47 +60,31 @@ class Timer extends React.Component {
     return (
       <Container>
         <div className="display-4">
-          <span>{min < 10 ? `0${min} m : ` : `${min} m : `}</span>
+          <DisplayClock min={min} sec={sec} />
 
-          <span>{sec < 10 ? `0${sec} s ` : `${sec} s `}</span>
-
-          <Button
-            className={`font-weight-bold`}
-            variant="outline-info"
-            size="sm"
-            onClick={this.increment}
-          >
-            +
-          </Button>
-          <Button
-            className="ml-4 font-weight-bold"
+          <Buttons onclick={this.increment} sign="+" variant="outline-info" />
+          <Buttons
+            onclick={this.decrement}
+            sign="-"
             variant="outline-secondary"
-            size="sm"
-            onClick={this.decrement}
-          >
-            -
-          </Button>
+          />
         </div>
         <div className="mt-4">
-          <Button variant="outline-success" size="sm" onClick={this.startTimer}>
-            Start
-          </Button>
-          <Button
-            onClick={this.stopTimer}
-            className="ml-4"
+          <Buttons
+            sign="Start"
+            onclick={this.startTimer}
+            variant="outline-success"
+          />
+          <Buttons
+            sign="Stop"
+            onclick={this.stopTimer}
             variant="outline-warning"
-            size="sm"
-          >
-            Stop
-          </Button>
-          <Button
-            className="ml-4"
+          />
+          <Buttons
+            sign="Reset"
+            onclick={this.resetTimer}
             variant="outline-danger"
-            size="sm"
-            onClick={this.resetTimer}
-          >
-            Reset
-          </Button>
+          />
         </div>
       </Container>
     );
